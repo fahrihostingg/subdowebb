@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Log Masuk</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-md w-full bg-slate-800 rounded-2xl shadow-xl p-8 border border-slate-700">
+    <h1 class="text-2xl font-bold text-center text-blue-400 mb-6">Log Masuk Panel</h1>
+    <% if (error) { %>
+      <div class="bg-red-500/10 border border-red-500 text-red-400 px-4 py-2 rounded-lg text-sm mb-4"><%= error %></div>
+    <% } %>
+    <form action="/login" method="POST" class="space-y-4">
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Emel</label>
+        <input type="email" name="email" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Kata Laluan</label>
+        <input type="password" name="password" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+      </div>
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 py-2.5 rounded-lg font-semibold text-sm transition">Masuk</button>
+    </form>
+    <div class="mt-4 text-center">
+      <a href="/" class="text-xs text-slate-400 hover:text-blue-400">Belum ada subdomain? Daftar Baru Di Sini</a>
+    </div>
+  </div>
+</body>
+</html>

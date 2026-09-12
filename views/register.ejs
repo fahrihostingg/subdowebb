@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Cipta Subdomain Anda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-md w-full bg-slate-800 rounded-2xl shadow-xl p-8 border border-slate-700">
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-extrabold text-blue-400">Daftar Subdomain</h1>
+      <p class="text-sm text-slate-400 mt-1">Daftar domain utama & akaun anda serentak</p>
+    </div>
+
+    <% if (error) { %>
+      <div class="bg-red-500/10 border border-red-500 text-red-400 px-4 py-2 rounded-lg text-sm mb-4"><%= error %></div>
+    <% } %>
+
+    <form action="/register" method="POST" class="space-y-4">
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Subdomain Pilihan</label>
+        <div class="flex">
+          <input type="text" name="prefix" placeholder="pahri" required class="w-1/2 bg-slate-900 border border-slate-700 rounded-l-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+          <select name="domain_id" required class="w-1/2 bg-slate-900 border border-l-0 border-slate-700 rounded-r-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 text-slate-300">
+            <% domains.forEach(d => { %>
+              <option value="<%= d.id %>">.<%= d.domain_name %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Jenis DNS</label>
+          <select name="record_type" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+            <option value="A">A Record (IPv4)</option>
+            <option value="CNAME">CNAME (Hostname)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Target / IP Server</label>
+          <input type="text" name="target_value" placeholder="103.xxx.xxx.xxx" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+        </div>
+      </div>
+
+      <hr class="border-slate-700 my-4">
+
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Emel Pengguna</label>
+        <input type="email" name="email" placeholder="nama@email.com" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Kata Laluan</label>
+        <input type="password" name="password" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Sahkan Kata Laluan</label>
+        <input type="password" name="confirm_password" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg text-sm transition mt-2">Cipta Subdomain Sekarang</button>
+    </form>
+
+    <div class="mt-4 text-center">
+      <a href="/login" class="text-xs text-slate-400 hover:text-blue-400">Sudah ada akaun? Log Masuk Di Sini</a>
+    </div>
+  </div>
+</body>
+</html>
